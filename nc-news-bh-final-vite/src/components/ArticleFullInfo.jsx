@@ -1,5 +1,6 @@
 
 import Header from './Header'
+import Votes from './Votes'
 
 
 const ArticleFullInfo = ({article_id, title, topic, author, body, created_at, votes, article_img_url})=>{
@@ -16,7 +17,7 @@ const ArticleFullInfo = ({article_id, title, topic, author, body, created_at, vo
     <p>Author: {author}</p>
     <p>{body}</p>
     <p>Created: {new Date(created_at).getFullYear()}</p>
-    <p>Votes: {votes}</p>
+    <Votes votes={votes}/>
     <p>Article ID: {article_id}</p>
     </section>
     </li>
