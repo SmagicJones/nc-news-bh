@@ -7,7 +7,7 @@ import Footer from './Footer'
 const Comments = ()=>{
     const {article_id} = useParams()
    
-    const [newComments, setNewComments] = useState({})
+    const [newComments, setNewComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
@@ -30,13 +30,17 @@ const Comments = ()=>{
         <>
         <h1>Comments</h1>
         <ul>
-        {newComments.map((comment)=>{
+        {newComments ? newComments.map((comment)=>{
             return(
                 <main key={comment.comment_id}>
                 <CommentCard article_id={comment.article_id} author={comment.author} body={comment.body} comment_id={comment.comment_id} created_at={comment.created_at} votes={comment.votes}/>
                 </main>
             )
-        })}
+        }) :
+            <main>
+            <p>No comments at the minute</p>
+            </main>
+        }
         </ul>
         <Footer/>
         </>
