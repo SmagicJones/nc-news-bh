@@ -1,6 +1,6 @@
 
 import Header from './Header'
-import Footer from './Footer'
+
 
 const ArticleFullInfo = ({article_id, title, topic, author, body, created_at, votes, article_img_url})=>{
     return(
@@ -21,7 +21,8 @@ const ArticleFullInfo = ({article_id, title, topic, author, body, created_at, vo
     </section>
     </li>
     </ul>
-    <Footer/>
+    
+    
     </>
     )
 
