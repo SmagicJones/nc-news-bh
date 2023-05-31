@@ -4,6 +4,7 @@ import {fetchArticle} from '../utils/api.js';
 
 
 import ArticleFullInfo from './ArticleFullinfo';
+import Comments from './Comments'
 
 
 const IndividualArticle = ()=>{
@@ -35,7 +36,10 @@ const IndividualArticle = ()=>{
     }
     
     return (
+        <>
         <ArticleFullInfo article_id={articleInfo.article_id} title={articleInfo.title} topic={articleInfo.topic} author={articleInfo.author} body={articleInfo.body} created_at={articleInfo.created_at} votes={articleInfo.votes} article_img_url={articleInfo.article_img_url}/>
+        <Comments/>
+        </>
     )
 
 }
