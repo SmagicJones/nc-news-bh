@@ -15,4 +15,15 @@ function fetchArticles(){
     })
 }
 
-export {fetchArticles}
+function fetchArticle(article_id){
+    return ncNewsAPI
+    .get(`/articles/${article_id}`)
+    .then((res)=>{
+        return res.data
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
+
+export {fetchArticles, fetchArticle}
