@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import {fetchComments} from '../utils/api.js'
 import{useParams} from 'react-router-dom';
+import NewCommentForm from './NewCommentForm'
 import CommentCard from './CommentCard'
 import Footer from './Footer'
 
@@ -17,7 +18,7 @@ const Comments = ()=>{
             setIsLoading(false)
         })
 
-    },[])
+    },[newComments])
 
     if(isLoading){
         return <section>
@@ -29,6 +30,7 @@ const Comments = ()=>{
     return (
         <>
         <h1>Comments</h1>
+        <NewCommentForm setNewComments={setNewComments}/>
         <ul>
         {newComments ? newComments.map((comment)=>{
             return(
