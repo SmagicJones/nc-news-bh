@@ -67,10 +67,22 @@ function postComment(newComment, article_id){
     .then((res)=>{
         return res.data
     })
+    // .catch((err)=>{
+    //     console.log(err)
+    // })
+}
+
+function fetchUsers(){
+    return ncNewsAPI
+    .get(`/users`)
+    .then((res)=>{
+        return res.data
+    })
     .catch((err)=>{
         console.log(err)
     })
-
 }
 
-export {fetchArticles, fetchArticle, fetchComments, upVote, downVote, postComment}
+
+
+export {fetchArticles, fetchArticle, fetchComments, upVote, downVote, postComment, fetchUsers}

@@ -10,6 +10,8 @@ const Comments = ()=>{
    
     const [newComments, setNewComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [isPosting, setIsPosting] = useState(false)
+    const [postError, setPostError] = useState('')
 
     useEffect(()=>{
         fetchComments(article_id).then((data)=>{
@@ -18,7 +20,8 @@ const Comments = ()=>{
             setIsLoading(false)
         })
 
-    },[newComments])
+    },[isPosting])
+
 
     if(isLoading){
         return <section>
@@ -26,12 +29,14 @@ const Comments = ()=>{
         <img id="logo" src='/src/images/bob-teaches-logo.svg'/>
         </section>
     }
+   
 
     return (
         <>
         <h1>Comments</h1>
-        <NewCommentForm setNewComments={setNewComments}/>
+        <NewCommentForm setNewComments={setNewComments} setIsPosting={setIsPosting} setPostError={setPostError}/>
         <ul>
+        {postError ? <p>{postError}</p> : <></> }
         {newComments ? newComments.map((comment)=>{
             return(
                 <main key={comment.comment_id}>
