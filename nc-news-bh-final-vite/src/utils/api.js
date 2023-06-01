@@ -59,4 +59,10 @@ function downVote(article_id){
     })
 }
 
+// function postComment(newComment, article_id){
+//     return ncNewsAPI
+//     .post(`/articles/${article_id}/comments`, newComment)
+
+// }
+
 export {fetchArticles, fetchArticle, fetchComments, upVote, downVote}
