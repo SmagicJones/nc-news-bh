@@ -3,7 +3,7 @@ import{useParams} from 'react-router-dom';
 import {fetchArticle} from '../utils/api.js';
 
 
-import ArticleFullInfo from './ArticleFullinfo';
+import ArticleFullInfo from './ArticleFullInfo';
 import Comments from './Comments'
 
 
