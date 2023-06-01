@@ -9,7 +9,6 @@ const Votes = ({votes})=>{
     const incVotes = ()=>{
         setVoteChange((currVotes)=> currVotes + 1)
         upVote(article_id).then((data)=>{
-          console.log(data)   
         })
         .catch(()=>{
             setVoteChange((currVotes)=> currVotes - 1)
@@ -18,7 +17,6 @@ const Votes = ({votes})=>{
     const decVotes = ()=>{
         setVoteChange((currVotes)=> currVotes - 1)
         downVote(article_id).then((data)=>{
-            console.log(data);
            
         })
         .catch(()=>{
