@@ -15,6 +15,10 @@ const NewCommentForm = ({setNewComments})=>{
         e.preventDefault();
         postComment(newComment, article_id).then((newComment)=>{
             setNewComments((currComments)=> [newComment, ...currComments]) 
+            setNewComment({
+                username: "",
+                body: ""
+            })
         })     
     }
 
