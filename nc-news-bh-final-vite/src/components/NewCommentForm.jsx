@@ -8,11 +8,14 @@ import {UserContext} from '../contexts/UserContext'
 const NewCommentForm = ({setNewComments, setIsPosting, setPostError})=>{
     const {article_id} = useParams();
     const {user, setUser} = useContext(UserContext)
+   
 
     const [newComment, setNewComment] = useState({
         username: user,
         body: ""
     });
+
+    const [submitted, setSubmitted] = useState(false)
 
    
 
@@ -28,27 +31,30 @@ useEffect(()=>{
     })
 },[])
 
-let isDisabled = false
+
 
 
 function handleSubmit(e){
     e.preventDefault();
+    setSubmitted(true)
         setIsPosting(true)
-            isDisabled = true
             if(newComment.body){
                 postComment(newComment, article_id).then((newComment)=>{
-                    isDisabled = false
                     setIsPosting(false)
+                    setSubmitted(false)
                     setNewComments((currComments)=> [newComment, ...currComments]) 
                     setNewComment({
                         username: user,
                         body: ""
                         })
+                        
                 }) 
                 .catch((err)=>{
                     setPostError('invalid username')
                 })  
             }
+
+            
                                             
     }
 
@@ -63,7 +69,7 @@ function handleSubmit(e){
         <input id="username" type="text" name="username" value={newComment.username} onChange={(e)=>{setNewComment({...newComment, username: e.target.value})}}/>
         <label htmlFor="body">Your comment: </label>
         <textarea id="body" type="text" name="comment-body" value={newComment.body} onChange={(e)=>{setNewComment({...newComment, body: e.target.value})}}/>
-        <button disabled={isDisabled}>submit</button>
+        <button disabled={submitted}>submit</button>
         </fieldset>
         </form>
     )
