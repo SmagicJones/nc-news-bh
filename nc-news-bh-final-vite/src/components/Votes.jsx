@@ -1,14 +1,15 @@
 import {useState, useEffect} from 'react'
-import {upVote, downVote} from '../utils/api.js'
+import {voter} from '../utils/api.js'
 import {useParams} from 'react-router-dom'
 
 const Votes = ({votes})=>{
    
     const {article_id} = useParams();
     const [voteChange, setVoteChange] = useState(0)
+    
     const incVotes = ()=>{
         setVoteChange((currVotes)=> currVotes + 1)
-        upVote(article_id).then((data)=>{
+        voter(article_id, 1).then((data)=>{
           console.log(data)   
         })
         .catch(()=>{
@@ -17,7 +18,7 @@ const Votes = ({votes})=>{
     }
     const decVotes = ()=>{
         setVoteChange((currVotes)=> currVotes - 1)
-        downVote(article_id).then((data)=>{
+        voter(article_id, -1).then((data)=>{
             console.log(data);
            
         })
