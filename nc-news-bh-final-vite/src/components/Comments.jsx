@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import {fetchComments} from '../utils/api.js'
 import{useParams} from 'react-router-dom';
+import NewCommentForm from './NewCommentForm'
 import CommentCard from './CommentCard'
 import Footer from './Footer'
 
@@ -9,6 +10,8 @@ const Comments = ()=>{
    
     const [newComments, setNewComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [isPosting, setIsPosting] = useState(false)
+    const [postError, setPostError] = useState('')
 
     useEffect(()=>{
         fetchComments(article_id).then((data)=>{
@@ -17,7 +20,8 @@ const Comments = ()=>{
             setIsLoading(false)
         })
 
-    },[])
+    },[isPosting])
+
 
     if(isLoading){
         return <section>
@@ -25,11 +29,14 @@ const Comments = ()=>{
         <img id="logo" src='/src/images/bob-teaches-logo.svg'/>
         </section>
     }
+   
 
     return (
         <>
         <h1>Comments</h1>
+        <NewCommentForm setNewComments={setNewComments} setIsPosting={setIsPosting} setPostError={setPostError}/>
         <ul>
+        {postError ? <p>{postError}</p> : <></> }
         {newComments ? newComments.map((comment)=>{
             return(
                 <main key={comment.comment_id}>

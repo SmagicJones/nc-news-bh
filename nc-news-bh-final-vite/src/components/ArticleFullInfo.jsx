@@ -22,8 +22,6 @@ const ArticleFullInfo = ({article_id, title, topic, author, body, created_at, vo
     </section>
     </li>
     </ul>
-    
-    
     </>
     )
 
