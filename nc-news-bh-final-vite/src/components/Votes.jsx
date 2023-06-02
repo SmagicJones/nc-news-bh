@@ -9,8 +9,10 @@ const Votes = ({votes})=>{
     
     const incVotes = ()=>{
         setVoteChange((currVotes)=> currVotes + 1)
+
         voter(article_id, 1).then((data)=>{
           console.log(data)   
+
         })
         .catch(()=>{
             setVoteChange((currVotes)=> currVotes - 1)
@@ -18,9 +20,10 @@ const Votes = ({votes})=>{
     }
     const decVotes = ()=>{
         setVoteChange((currVotes)=> currVotes - 1)
+
         voter(article_id, -1).then((data)=>{
             console.log(data);
-           
+
         })
         .catch(()=>{
             setVoteChange((currVotes)=> currVotes + 1)
