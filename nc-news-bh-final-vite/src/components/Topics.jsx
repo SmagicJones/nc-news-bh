@@ -30,7 +30,7 @@ const Topics = ()=>{
             {topics.map((topic)=>{
                 return (
                     <li className="topics" key={topic.slug}>
-                    <button><Link to={`/articles/topics/${topic.slug}`}>{topic.slug}</Link></button>
+                    <button><Link to={`articles/topics/${topic.slug}`}>{topic.slug}</Link></button>
                     </li>
                 )
             })}
