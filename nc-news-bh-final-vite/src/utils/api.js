@@ -37,9 +37,36 @@ function fetchComments(article_id){
     })
 }
 
+
+
+
+
+
 function voter(article_id, vote){
     return ncNewsAPI
     .patch(`/articles/${article_id}`, {inc_votes: vote,})
+
+    .then((res)=>{
+        return res.data
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
+
+
+function postComment(newComment, article_id){
+    return ncNewsAPI
+    .post(`/articles/${article_id}/comments`, newComment)
+    .then((res)=>{
+        return res.data
+    })
+    
+}
+
+function fetchUsers(){
+    return ncNewsAPI
+    .get(`/users`)
     .then((res)=>{
         return res.data
     })
@@ -50,10 +77,5 @@ function voter(article_id, vote){
 
 
 
-// function postComment(newComment, article_id){
-//     return ncNewsAPI
-//     .post(`/articles/${article_id}/comments`, newComment)
+export {fetchArticles, fetchArticle, fetchComments, voter, postComment, fetchUsers}
 
-// }
-
-export {fetchArticles, fetchArticle, fetchComments, voter}
