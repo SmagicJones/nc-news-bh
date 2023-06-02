@@ -4,9 +4,13 @@ const ncNewsAPI = axios.create({
     baseURL: "https://nc-news-bh.onrender.com/api/",
 })
 
-function fetchArticles(){
+function fetchArticles(topic){
     return ncNewsAPI
-    .get("/articles")
+    .get("/articles", {
+        params: {
+            topic: topic
+        }
+    })
     .then((res)=>{
         return res.data
     })
@@ -14,6 +18,17 @@ function fetchArticles(){
         console.log(err)
     })
 }
+
+// function fetchArticlesByTopic(topic){
+//     return ncNewsAPI
+//     .get(`/articles?topic=${topic}`)
+//     .then((res)=>{
+//         return res.data
+//     })
+//     .catch((err)=>{
+//         console.log(err)
+//     })
+// }
 
 function fetchArticle(article_id){
     return ncNewsAPI
@@ -36,11 +51,6 @@ function fetchComments(article_id){
         console.log(err)
     })
 }
-
-
-
-
-
 
 function voter(article_id, vote){
     return ncNewsAPI
@@ -75,7 +85,18 @@ function fetchUsers(){
     })
 }
 
+function fetchTopics(){
+    return ncNewsAPI
+    .get(`/topics`)
+    .then((res)=>{
+        return res.data
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
 
 
-export {fetchArticles, fetchArticle, fetchComments, voter, postComment, fetchUsers}
+
+export {fetchArticles, fetchArticle, fetchComments, voter, postComment, fetchUsers, fetchTopics }
 

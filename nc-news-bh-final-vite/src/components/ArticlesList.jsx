@@ -2,6 +2,7 @@ import {useState, useEffect} from "react"
 
 import {useContext} from 'react'
 import {UserContext} from '../contexts/UserContext'
+import {useParams} from 'react-router-dom'
 
 import { fetchArticles } from '../utils/api.js'
 
@@ -17,18 +18,19 @@ import Login from './Login'
 
 
 const ArticlesList = () =>{
+    const {topic} = useParams();
     const {user, setUser} = useContext(UserContext)
     const [articlesList, setArticlesList] = useState([])
 
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
-        fetchArticles().then((data)=>{
+        fetchArticles(topic).then((data)=>{
             const articles = data.articles
             setArticlesList(articles)
             setIsLoading(false)
         })
-    }, [])
+    }, [topic])
 
     if(isLoading){
         return( <section>
