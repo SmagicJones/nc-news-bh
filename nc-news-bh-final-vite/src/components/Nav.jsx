@@ -5,6 +5,7 @@ const Nav =()=>{
         <nav>
         <Link to="/">Home</Link>
         <Link to="/:article_id"></Link>
+        
         </nav>
     )
 }

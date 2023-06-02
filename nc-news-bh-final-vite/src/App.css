@@ -43,4 +43,7 @@ button{
   margin: 5%
 }
 
+.topics{
+  display: inline-block;
+}
 

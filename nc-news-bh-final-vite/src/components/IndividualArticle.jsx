@@ -16,7 +16,6 @@ const IndividualArticle = ()=>{
     const [isLoading, setIsLoading] = useState(true)
 
     
-console.log("hi")
     useEffect(()=>{
         fetchArticle(article_id).then((data)=>{
             const article = data.article[0]
