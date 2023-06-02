@@ -1,5 +1,8 @@
 import {useState, useEffect} from "react"
 
+import {useContext} from 'react'
+import {UserContext} from '../contexts/UserContext'
+
 import { fetchArticles } from '../utils/api.js'
 
 import ArticleCard from './ArticleCard'
@@ -8,8 +11,13 @@ import Header from './Header'
 
 import Footer from './Footer'
 
+import Login from './Login'
+
+
+
 
 const ArticlesList = () =>{
+    const {user, setUser} = useContext(UserContext)
     const [articlesList, setArticlesList] = useState([])
 
     const [isLoading, setIsLoading] = useState(true)
@@ -33,6 +41,7 @@ const ArticlesList = () =>{
     return(
         <>
         <Header/>
+        {/* <Login user={user} setUser={setUser}/> */}
         <ul>
         {articlesList.map((article)=>{
             return(
