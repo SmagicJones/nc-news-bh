@@ -19,17 +19,6 @@ function fetchArticles(topic){
     })
 }
 
-// function fetchArticlesByTopic(topic){
-//     return ncNewsAPI
-//     .get(`/articles?topic=${topic}`)
-//     .then((res)=>{
-//         return res.data
-//     })
-//     .catch((err)=>{
-//         console.log(err)
-//     })
-// }
-
 function fetchArticle(article_id){
     return ncNewsAPI
     .get(`/articles/${article_id}`)
@@ -96,7 +85,18 @@ function fetchTopics(){
     })
 }
 
+function deleteComment(comment_id){
+    return ncNewsAPI
+    .delete(`/comments/${comment_id}`)
+    .then((res)=>{
+        return res.data
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
 
 
-export {fetchArticles, fetchArticle, fetchComments, voter, postComment, fetchUsers, fetchTopics }
+
+export {fetchArticles, fetchArticle, fetchComments, voter, postComment, fetchUsers, fetchTopics, deleteComment }
 
