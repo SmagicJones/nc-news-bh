@@ -12,6 +12,7 @@ const Comments = ()=>{
     const [isLoading, setIsLoading] = useState(true)
     const [isPosting, setIsPosting] = useState(false)
     const [postError, setPostError] = useState('')
+    const [isDeleting, setIsDeleting] = useState(false)
 
     useEffect(()=>{
         fetchComments(article_id).then((data)=>{
@@ -20,7 +21,7 @@ const Comments = ()=>{
             setIsLoading(false)
         })
 
-    },[isPosting])
+    },[isPosting, isDeleting])
 
 
     if(isLoading){
@@ -40,7 +41,7 @@ const Comments = ()=>{
         {newComments ? newComments.map((comment)=>{
             return(
                 <main key={comment.comment_id}>
-                <CommentCard article_id={comment.article_id} author={comment.author} body={comment.body} comment_id={comment.comment_id} created_at={comment.created_at} votes={comment.votes}/>
+                <CommentCard article_id={comment.article_id} author={comment.author} body={comment.body} comment_id={comment.comment_id} created_at={comment.created_at} votes={comment.votes} setIsDeleting={setIsDeleting}/>
                 </main>
             )
         }) :
