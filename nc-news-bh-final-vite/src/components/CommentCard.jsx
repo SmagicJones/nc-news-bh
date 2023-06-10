@@ -7,7 +7,6 @@ import { UserContext } from '../contexts/UserContext';
 const CommentCard = ({article_id, author, body, comment_id, created_at, votes, setIsDeleting={setIsDeleting} })=>{
 
     const {user} = useContext(UserContext)
-    console.log(user)
 
     return (
         <li className="card">
